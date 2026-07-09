@@ -1,23 +1,23 @@
 export default function Home() {
   return (
     <main className="min-h-screen bg-black text-white">
-      <nav className="flex justify-between p-6">
-        <h1 className="text-3xl font-bold">
+      <nav className="flex justify-between items-center p-6">
+        <h1 className="text-2xl font-bold">
           Arc<span className="text-blue-500">Numbers</span>
         </h1>
 
-        <button className="bg-white text-black px-4 py-2 rounded-xl">
+        <button className="rounded-xl bg-white text-black px-5 py-2">
           Connect Wallet
         </button>
       </nav>
 
-      <section className="text-center mt-20 px-5">
+      <section className="flex flex-col items-center text-center mt-20 px-6">
         <h2 className="text-5xl font-bold">
-          Buy Virtual Numbers
+          Virtual Numbers Powered by Arc
         </h2>
 
-        <p className="text-gray-400 mt-5">
-          Instant virtual numbers with USDC payment on Arc Network.
+        <p className="mt-5 text-gray-400 max-w-xl">
+          Buy virtual numbers instantly and pay securely with USDC on Arc Network.
         </p>
 
         <button className="mt-8 bg-blue-600 px-8 py-3 rounded-xl">
@@ -25,18 +25,29 @@ export default function Home() {
         </button>
       </section>
 
-      <section className="grid gap-5 p-6 mt-10">
-        <div className="bg-zinc-900 rounded-2xl p-6">
-          <h3 className="text-xl">🇺🇸 USA Number</h3>
-          <p className="text-gray-400">Telegram</p>
-          <p className="mt-3">1.50 USDC</p>
-
-          <button className="mt-4 bg-white text-black px-5 py-2 rounded-xl">
-            Buy Now
-          </button>
-        </div>
+      <section className="grid md:grid-cols-3 gap-5 p-8 mt-10">
+        <Card country="USA" service="Telegram" price="1.50 USDC" />
+        <Card country="UK" service="WhatsApp" price="2.00 USDC" />
+        <Card country="Canada" service="Google" price="1.20 USDC" />
       </section>
     </main>
   );
 }
 
+function Card({country, service, price}: {
+  country:string;
+  service:string;
+  price:string;
+}) {
+  return (
+    <div className="bg-zinc-900 p-6 rounded-2xl">
+      <h3 className="text-xl font-bold">{country}</h3>
+      <p className="text-gray-400">{service}</p>
+      <p className="mt-3">{price}</p>
+
+      <button className="mt-5 w-full bg-white text-black rounded-xl py-2">
+        Buy Now
+      </button>
+    </div>
+  );
+}
